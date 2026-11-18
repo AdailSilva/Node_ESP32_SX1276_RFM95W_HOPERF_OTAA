@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Os firmwares servem a página e a API em http:// (sem TLS) na rede local, e o
+  IP de cada dispositivo não é conhecido de antemão: HTTP liberado para o app.
+  O app só fala com os dispositivos da rede local.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>

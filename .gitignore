@@ -1,0 +1,23 @@
+# --- ESP-IDF build output -------------------------------------------------
+build/
+build-*/
+managed_components/
+dependencies.lock
+
+# Generated config. Keep sdkconfig.defaults and boards/*.defaults in git!
+sdkconfig
+sdkconfig.old
+sdkconfig.esp32
+sdkconfig.esp32s3_n16r8
+sdkconfig.esp32s3_n32r16v
+sdkconfig.*.old
+
+# Local logs (scripts / script -f), editor / OS junk
+logs/
+dist/
+*.swp
+*~
+.vscode/
+
+# Configuration exported by the web page / app (Wi-Fi SSID, LoRaWAN keys): keep it local
+configurations_backup/

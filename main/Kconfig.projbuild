@@ -1,0 +1,45 @@
+menu "LoRaWAN node board"
+
+    # Board (ESP32 module) of this build. Set by boards/<board>.defaults when
+    # the firmware is built with scripts/build.sh <board> (or -D BOARD=<board>),
+    # together with the flash/PSRAM options of the module. The factory pin map
+    # of the RFM95W per board is in main/node_board.h.
+
+    choice NODE_BOARD
+        prompt "Board (ESP32 module)"
+        default NODE_BOARD_ESP32_WROOM_32U if IDF_TARGET_ESP32
+        default NODE_BOARD_ESP32S3_WROOM_2_N32R16V if IDF_TARGET_ESP32S3
+        help
+            Changing it here alone does NOT change flash/PSRAM: use
+            scripts/build.sh <esp32|esp32s3_n16r8|esp32s3_n32r16v>.
+
+        config NODE_BOARD_ESP32_WROOM_32U
+            bool "ESP32-WROOM-32U DevKit (4 MB flash, no PSRAM)"
+            depends on IDF_TARGET_ESP32
+
+        config NODE_BOARD_ESP32S3_WROOM_1U_N16R8
+            bool "ESP32-S3-WROOM-1U-N16R8 DevKit (16 MB quad flash, 8 MB octal PSRAM)"
+            depends on IDF_TARGET_ESP32S3
+
+        config NODE_BOARD_ESP32S3_WROOM_2_N32R16V
+            bool "ESP32-S3-WROOM-2-N32R16V DevKit (32 MB octal flash, 16 MB octal PSRAM)"
+            depends on IDF_TARGET_ESP32S3
+    endchoice
+
+    config NODE_BOARD_ID
+        string
+        default "esp32" if NODE_BOARD_ESP32_WROOM_32U
+        default "esp32s3_n16r8" if NODE_BOARD_ESP32S3_WROOM_1U_N16R8
+        default "esp32s3_n32r16v" if NODE_BOARD_ESP32S3_WROOM_2_N32R16V
+        help
+            Same value as BOARD in scripts/build.sh. Reported in GET /info ("board").
+
+    config NODE_BOARD_NAME
+        string
+        default "ESP32-WROOM-32U" if NODE_BOARD_ESP32_WROOM_32U
+        default "ESP32-S3-WROOM-1U-N16R8" if NODE_BOARD_ESP32S3_WROOM_1U_N16R8
+        default "ESP32-S3-WROOM-2-N32R16V" if NODE_BOARD_ESP32S3_WROOM_2_N32R16V
+        help
+            Module name shown on the boot banner, the web page and the app.
+
+endmenu

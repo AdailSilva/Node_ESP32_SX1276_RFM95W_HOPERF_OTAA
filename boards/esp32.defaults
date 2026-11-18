@@ -1,0 +1,16 @@
+# ---------------------------------------------------------------------------
+# Board: ESP32-WROOM-32U DevKit (38 pins)        BOARD=esp32   IDF_TARGET=esp32
+#
+#   Chip    ESP32-D0WD-V3, Xtensa LX6 dual-core 240 MHz, 520 KB SRAM
+#   Flash   4 MB quad SPI, 3.3 V (GPIO6-11)       PSRAM: none
+#   Antenna external, u.FL connector (the "U")
+#   Console UART0 (USB-UART chip of the DevKit) -> /dev/ttyUSB0
+#
+# Loaded after sdkconfig.defaults (see CMakeLists.txt).
+# Factory pins of the RFM95W: main/node_board.h. Guide: doc/hardware/ESP32-WROOM-32U_DevKit.md
+# ---------------------------------------------------------------------------
+CONFIG_NODE_BOARD_ESP32_WROOM_32U=y
+
+CONFIG_ESPTOOLPY_FLASHMODE_DIO=y
+CONFIG_ESPTOOLPY_FLASHFREQ_40M=y
+CONFIG_ESPTOOLPY_FLASHSIZE_4MB=y

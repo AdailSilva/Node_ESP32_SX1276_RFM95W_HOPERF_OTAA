@@ -1,0 +1,30 @@
+name: lorawan_node_otaa_app
+description: App Android do nó LoRaWAN OTAA (mesmas funções da página web do firmware).
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.5.0 <4.0.0'
+  flutter: '>=3.24.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  # login lembrado, criptografado (Android Keystore / iOS Keychain)
+  flutter_secure_storage: ^9.2.2
+  # mDNS (_http._tcp): NsdManager no Android, Bonjour no iOS
+  nsd: '>=2.3.1 <5.0.0'
+  # exportar/importar configuração, logs e certificados
+  file_picker: ^10.3.10
+  # "Abrir no mapa" e links
+  url_launcher: ^6.3.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: '>=4.0.0 <7.0.0'
+
+flutter:
+  uses-material-design: true
